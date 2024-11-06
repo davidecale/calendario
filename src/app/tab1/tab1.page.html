@@ -13,5 +13,27 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Pulsante per attivare/disattivare la scena AR -->
+  <ion-button (click)="toggleAR()">Mostra AR</ion-button>
 </ion-content>
+  <!-- Aggiungi la scena AR.js come sovrapposizione -->
+  <div *ngIf="isArVisible" style="position: relative; width: 100%; height: 100%; overflow: hidden;">
+    <a-scene embedded arjs>
+      <!-- Rilevamento di una superficie semplice (senza marker) -->
+      <a-plane position="0 0 -5" width="5" height="5" color="#7BC8A4" opacity="0.5"></a-plane>
+  
+      <!-- Sovrapposizione dell'immagine -->
+      <a-image src="path_to_your_image.jpg" position="0 1 -5" width="2" height="2"></a-image>
+  
+      <!-- Oggetto 3D da sovrapporre -->
+      <a-box position="0 1 -5" color="#ff0000" depth="1" height="1" width="1"></a-box>
+  
+      <!-- La fotocamera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  
+  </div>
+
+  <!-- Resto del contenuto della pagina -->
+  <app-explore-container name="Tab 1 page"></app-explore-container>
+

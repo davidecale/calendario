@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  isArVisible = false;  // Flag per la visibilità della scena AR
 
   constructor() {}
 
+  toggleAR() {
+    this.isArVisible = !this.isArVisible;  // Cambia lo stato di visibilità
+  }
 }
